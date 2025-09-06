@@ -1,0 +1,244 @@
+:root {
+  --primary: #222;
+  --bg: #f9f9f9;
+  --accent: #0077ff;
+  --card-bg: #fff;
+}
+
+body.dark {
+  --primary: #f1f1f1;
+  --bg: #121212;
+  --accent: #4ba3ff;
+  --card-bg: #1f1f1f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: var(--bg);
+  color: var(--primary);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Logo layout */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--primary);
+}
+.logo svg {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+}
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.15rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+.wordmark .name { font-size: 1.15rem; }
+.wordmark .dot  { color: var(--accent); }
+.wordmark .role { font-size: 0.95rem; opacity: 0.8; }
+
+/* Ensure header stays on top of cards */
+header {
+  position: sticky; /* or fixed/relative depending on your layout */
+  top: 0;
+  background: var(--card-bg);
+  z-index: 1000;
+}
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--card-bg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+nav a:hover { color: var(--accent); }
+
+#themeToggle {
+  margin-left: 1rem;
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+  color: var(--primary);
+  transition: background 0.3s, color 0.3s;
+}
+
+#themeToggle:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p { color: #555; }
+
+.projects {
+  padding: 3rem 2rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.projects h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* fixed 3 columns on wide screens */
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* card anchor */
+.card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  background: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.card-image { position: relative; }
+
+.card img {
+  width: 100%;
+  display: block;
+  transition: filter 0.3s;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card:hover img { filter: brightness(0.8); }
+.card:hover .overlay { opacity: 1; }
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-body h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.card-body p {
+  margin: 0;
+  color: #666;
+}
+
+.contact {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+html { scroll-behavior: smooth; }
+
+#projects {
+  padding: 3rem 1rem;
+}
+
+#projects h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.projects-grid a {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #333;
+  background: #fafafa;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.projects-grid a:hover {
+  background: #f0f0f0;
+  transform: translateY(-3px);
+}
